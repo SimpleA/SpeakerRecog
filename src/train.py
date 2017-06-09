@@ -6,12 +6,12 @@ import subprocess as subp
 
 def trainUBM():
     argu = ["bin/TrainWorld", "--config", "cfg/TrainWorld.cfg"]
-    ret = argu.run(argu, check=True, stdout=subp.PIPE)
-    with open("log/TrainWorld.log") as tw:
-        tw.write(ret)
+    ret = subp.run(argu, check=True, stdout=subp.PIPE)
+    with open("log/TrainWorld.log", "w") as tw:
+        tw.write(str(ret.stdout))
 
 def trainAdapt():
     argu = ["bin/TrainTarget", "--config", "cfg/TrainTarget.cfg"]
-    ret = argu.run(argu, check=True, stdout=subp.PIPE)
-    with open("log/TrainTarget.log") as tw:
-        tw.write(ret)
+    ret = subp.run(argu, check=True, stdout=subp.PIPE)
+    with open("log/TrainTarget.log", "w") as tw:
+        tw.write(str(ret.stdout))

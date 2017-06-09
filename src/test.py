@@ -6,3 +6,6 @@ import subprocess as subp
 
 def computeTest():
     argu = ["bin/ComputeTest", "--config", "cfg/ComputeTest_GMM.cfg"]
+    ret = subp.run(argu, check=True, stdout=subp.PIPE)
+    with open("log/ComputeTest_GMM.log", "w") as tw:
+        tw.write(str(ret.stdout))
